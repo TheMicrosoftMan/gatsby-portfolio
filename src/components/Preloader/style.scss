@@ -1,0 +1,109 @@
+.preloader {
+  $height: 2rem;
+
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-top: 12px;
+
+  .chars .char {
+    font-size: $height;
+  }
+
+  .chars .dots .char {
+    font-size: $height;
+    display: inline-block;
+  }
+
+  .dots .dot {
+    position: relative;
+    font-size: $height;
+    top: 0;
+    left: 0;
+  }
+
+  .dot._dot-1 {
+    animation: dot_1 1s ease-in-out infinite;
+    animation-fill-mode: backwards;
+    animation-direction: alternate;
+  }
+
+  .dot._dot-2 {
+    animation: dot_2 1s ease-in-out infinite;
+    animation-fill-mode: backwards;
+    animation-direction: alternate;
+    animation-delay: 0.5s;
+  }
+
+  .dot._dot-3 {
+    animation: dot_3 1s ease-in-out infinite;
+    animation-fill-mode: backwards;
+    animation-direction: alternate;
+    animation-delay: 0.75s;
+  }
+
+  .dot._dot-4 {
+    animation: dot_3 1s ease-in-out infinite;
+    animation-fill-mode: backwards;
+    animation-direction: alternate;
+    animation-delay: 1s;
+  }
+  .dot._dot-5 {
+    animation: dot_3 1s ease-in-out infinite;
+    animation-fill-mode: backwards;
+    animation-direction: alternate;
+    animation-delay: 1.5s;
+  }
+
+  @keyframes dot_1 {
+    0% {
+      top: 0;
+      left: 0;
+    }
+
+    50% {
+      top: -30px;
+      /*left:20px;*/
+    }
+
+    100% {
+      top: 0px;
+      left: 0px;
+    }
+  }
+
+  @keyframes dot_2 {
+    0% {
+      top: 0;
+      left: 0;
+    }
+
+    50% {
+      top: -30px;
+      /*left:20px;*/
+    }
+
+    100% {
+      top: 0px;
+      left: 0px;
+    }
+  }
+
+  @keyframes dot_3 {
+    0% {
+      top: 0;
+      left: 0;
+    }
+
+    50% {
+      top: -30px;
+      /*left:-40px;*/
+    }
+
+    100% {
+      top: 0px;
+      left: 0px;
+    }
+  }
+}

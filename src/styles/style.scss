@@ -1,0 +1,430 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+@import "~sass-rem";
+@import "./variables";
+@import "./fonts";
+@import "./mixins";
+@import "../components/Sidebar/style";
+@import "../components/Content/style";
+@import "../components/PostsList/style";
+@import "../components/SkillsCrircle/style";
+@import "../components/SkillsCloud/style";
+@import "../components/GitHubRepo/style";
+@import "../components/Hello/style";
+@import "../components/Preloader/style";
+
+@import "./posts";
+@import "./contact";
+@import "./skills";
+
+.app {
+  // background-color: #262626;
+  background: url(//www.bing.com/th?id=OHR.BubbleNebula_EN-US5338454782_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=HpEdgeAn);
+
+  min-height: 100vmin;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  font-family: Consolas, "Courier New", monospace;
+
+  .page {
+    display: flex;
+
+    h2 {
+      margin-bottom: 7px;
+    }
+  }
+
+  .main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #262626;
+
+    height: $content-height;
+  }
+
+  .blog {
+    display: flex;
+
+    &__list {
+      margin: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+
+      &_item {
+        @include acrylic-background-black;
+        transition-duration: 0.4s;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: max-content;
+        max-width: 380px;
+        height: 232px;
+        overflow: hidden;
+        font-size: 1.22rem;
+        box-sizing: border-box;
+        margin: 0 0.4rem;
+        padding: 16px 1rem;
+        text-decoration: none;
+        cursor: pointer;
+
+        &_title {
+          font-family: "Selawik Semilight";
+          font-size: rem(24px);
+          line-height: rem(28px);
+          color: #fff;
+        }
+
+        &_short {
+          font-family: "Selawik Regular";
+          font-size: rem(20px);
+          line-height: rem(24px);
+          color: #ccc;
+          margin-top: 8px;
+          flex-grow: 100;
+        }
+
+        &_date {
+          font-family: "Selawik Semibold";
+          font-size: rem(14px);
+          line-height: rem(20px);
+          color: #ccc;
+        }
+
+        &:hover {
+          border: 1px solid #6e6e6e;
+        }
+      }
+    }
+  }
+
+  .post {
+    background-color: #262626;
+  }
+
+  .github {
+    position: relative;
+
+    .user_info {
+      display: flex;
+      flex-direction: column;
+      margin: 7px 0 7px 7px;
+      height: calc(#{$content-height} - 14px);
+      overflow-y: auto;
+
+      .info {
+        display: flex;
+
+        span {
+          display: flex;
+
+          i {
+            margin-right: 10px;
+          }
+        }
+
+        &_avatar {
+          width: 100%;
+          max-width: 250px;
+          border-radius: 3px;
+        }
+
+        &_user {
+          display: flex;
+          flex-direction: column;
+          margin-left: 20px;
+
+          &_login {
+            font-size: 1.9rem;
+            line-height: 1.9rem;
+            margin-bottom: 5px;
+            text-decoration: none;
+            font-weight: bold;
+          }
+
+          &_name {
+            font-size: 1.6rem;
+            margin-bottom: 17px;
+            color: #ccc;
+            opacity: 0.7;
+          }
+
+          &_location {
+            align-items: center;
+            margin-bottom: 20px;
+          }
+
+          &_at {
+            line-height: 1rem;
+            margin: 3px 0;
+            color: #ccc;
+
+            &_date {
+              color: #569cd6;
+            }
+
+            &_text {
+              margin-left: 5px;
+              color: #ce9178;
+            }
+          }
+        }
+      }
+
+      .repos-block {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+
+        .repos_head {
+          display: flex;
+          align-items: center;
+          font-weight: normal;
+          margin-bottom: 5px;
+          font-size: 1.5rem;
+
+          &_repo-count {
+            font-size: 0.7rem;
+            line-height: 0.7rem;
+            margin-left: 10px;
+            border: 1px solid #d4d4d4;
+            box-sizing: border-box;
+            padding: 2px 4px;
+          }
+        }
+      }
+    }
+
+    .repo_info {
+      display: flex;
+      flex-direction: column;
+      margin: 7px 0 7px 7px;
+      height: calc(#{$content-height} - 14px);
+      overflow-y: auto;
+      position: relative;
+
+      &_close {
+        display: flex;
+        align-items: center;
+        width: 20px;
+        height: 20px;
+        font-size: 1.1rem;
+        margin-right: 15px;
+        color: #ccc;
+        transition-duration: 0.3s;
+        cursor: pointer;
+
+        &:hover {
+          color: #fff;
+        }
+      }
+
+      &_head {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        align-items: center;
+
+        &_avatar {
+          $avatar-size: 28px;
+          width: $avatar-size;
+          height: $avatar-size;
+          border-radius: 50%;
+          margin-right: 10px;
+        }
+      }
+
+      details {
+        margin: 5px 0;
+        summary {
+          margin: 5px 0;
+          cursor: pointer;
+
+          &:active,
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+
+      details[open] summary ~ * {
+        animation: sweep 0.3s;
+      }
+
+      @keyframes sweep {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      &_name {
+        font-size: 1.6rem;
+        line-height: 1.6rem;
+        color: $text-color;
+        text-decoration: none;
+
+        &:hover {
+          color: #fff;
+        }
+      }
+
+      &_text {
+        display: flex;
+
+        &_label {
+          color: #9cdcfe;
+        }
+
+        &_value {
+          margin-left: 5px;
+          color: #b5cea8;
+        }
+
+        &_at {
+          margin: 10px 0;
+        }
+      }
+
+      &_languages-commits-chart {
+        display: flex;
+      }
+
+      &_languages-commits {
+        max-width: 50%;
+      }
+
+      &_languages {
+        display: flex;
+        flex-direction: column;
+
+        &_title {
+          color: #569cd6;
+        }
+
+        &-list {
+          list-style: none;
+          padding-left: 15px;
+          margin-left: 2px;
+          box-sizing: border-box;
+          border-left: 3px solid #587c0c;
+
+          &_item {
+            &_name {
+              color: #9cdcfe;
+            }
+
+            &_size {
+              color: #b5cea8;
+              margin: 0 5px;
+            }
+
+            &_percent {
+              color: #c586c0;
+              margin-left: 5px;
+            }
+          }
+        }
+      }
+
+      &_commits {
+        display: flex;
+        flex-direction: column;
+
+        &_title {
+          color: #569cd6;
+        }
+
+        &-list {
+          list-style: none;
+          max-height: 200px;
+          overflow-y: auto;
+          padding-left: 15px;
+          margin-left: 2px;
+          box-sizing: border-box;
+          border-left: 3px solid #587c0c;
+
+          &_item {
+            &_date {
+              color: #9cdcfe;
+            }
+
+            &_msg {
+              color: #ce9178;
+              margin-left: 5px;
+            }
+          }
+        }
+      }
+
+      &_chart {
+        display: flex;
+        max-width: 30%;
+        width: 100%;
+        margin: 10px 0;
+        position: relative;
+      }
+    }
+
+    &-preload {
+      position: absolute;
+      right: 20px;
+      top: 0;
+    }
+
+    .opacity-animation-enter {
+      opacity: 0;
+    }
+    .opacity-animation-enter-active {
+      opacity: 1;
+      transition: opacity 1000ms;
+    }
+    .opacity-animation-exit {
+      opacity: 1;
+    }
+    .opacity-animation-exit-active {
+      opacity: 0;
+      transition: opacity 1000ms;
+    }
+  }
+
+  .posts-list {
+    max-width: 300px;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .f-d-center-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .f-column {
+    flex-direction: column;
+  }
+
+  .pauseAnim {
+    animation-play-state: paused;
+  }
+
+  .d-block {
+    display: block;
+  }
+
+  .d-none {
+    display: none;
+  }
+}

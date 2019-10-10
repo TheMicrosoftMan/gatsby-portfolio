@@ -1,0 +1,42 @@
+.PostsList {
+  display: flex;
+  flex-direction: column;
+  background-color: #1f1f1f;
+  width: 100%;
+  max-width: 250px;
+  height: $content-height;
+  overflow: auto;
+
+  .post-link {
+    cursor: pointer;
+    padding-left: 4px;
+    color: $text-color;
+    text-decoration: none;
+    font-size: 0.825rem;
+    line-height: 1.4rem;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      background-color: #333333;
+      color: #fff;
+    }
+
+    &-date {
+      font-size: rem(11.7px);
+      margin-left: 5.85px;
+      opacity: 0.7;
+    }
+
+    &-icon {
+      margin-right: 6px;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .active {
+    background-color: red;
+    color: #fff;
+  }
+}

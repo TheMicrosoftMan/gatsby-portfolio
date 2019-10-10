@@ -1,0 +1,144 @@
+.Hello {
+  display: flex;
+  flex-direction: column;
+  animation: startAnimation 0.3s linear;
+
+  @keyframes startAnimation {
+    0% {
+      margin-left: -180px;
+      filter: blur(4px);
+      opacity: 0;
+    }
+
+    25% {
+      margin-left: -100px;
+      filter: blur(3px);
+      opacity: 0.25;
+    }
+
+    50% {
+      margin-left: -50px;
+      filter: blur(2px);
+      opacity: 0.5;
+    }
+
+    75% {
+      margin-left: -25px;
+      filter: blur(1px);
+      opacity: 0.75;
+    }
+
+    100% {
+      margin-left: 0;
+      filter: blur(0px);
+      opacity: 1;
+    }
+  }
+
+  .hello {
+    $scroll-size: rem(60px);
+    margin-left: 2px;
+    font-family: "Selawik Light";
+    margin-bottom: 20px;
+
+    height: $scroll-size;
+    display: flex;
+
+    p {
+      line-height: $scroll-size;
+      font-size: $scroll-size;
+      color: #fff;
+    }
+
+    .scroller {
+      height: $scroll-size;
+      line-height: $scroll-size;
+      margin-left: 10px;
+      overflow: hidden;
+    }
+
+    .scroller span {
+      display: block;
+      font-size: $scroll-size;
+      color: #ccc;
+    }
+
+    .scroller .inner {
+      animation: scroll 5s infinite ease-out;
+    }
+
+    @keyframes scroll {
+      0% {
+        margin-top: 0;
+      }
+
+      15% {
+        margin-top: 0;
+      }
+
+      25% {
+        margin-top: -$scroll-size;
+      }
+
+      35% {
+        margin-top: -$scroll-size;
+      }
+
+      45% {
+        margin-top: calc(#{$scroll-size} * -2);
+      }
+
+      55% {
+        margin-top: calc(#{$scroll-size} * -2);
+      }
+
+      65% {
+        margin-top: calc(#{$scroll-size} * -3);
+      }
+
+      75% {
+        margin-top: calc(#{$scroll-size} * -3);
+      }
+
+      100% {
+        margin-top: 0;
+      }
+    }
+  }
+
+  .im {
+    display: flex;
+
+    &__left {
+      color: #fff;
+
+      p {
+        font-size: 4.5rem;
+        line-height: 0.8;
+        text-transform: uppercase;
+        font-family: "Selawik Light";
+      }
+    }
+
+    &__right {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-left: 5px;
+
+      &_name {
+        font-family: "Selawik Semilight";
+        font-size: rem(34px);
+        line-height: 1;
+        color: #fff;
+      }
+
+      &_front {
+        font-family: "Selawik Regular";
+        font-size: rem(24px);
+        line-height: 1.2;
+        color: #ccc;
+      }
+    }
+  }
+}

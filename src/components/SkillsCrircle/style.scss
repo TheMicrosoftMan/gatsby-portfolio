@@ -1,0 +1,127 @@
+.orbit {
+  display: flex;
+  position: relative;
+  width: calc(#{$content-height} / 2);
+  height: calc(#{$content-height} / 2);
+  max-width: 300px;
+  max-height: 300px;
+
+  &__planets {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    animation-duration: 10000ms;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    animation-name: planetsRotation;
+
+    border: 1px solid rgb(51, 51, 51);
+
+    &_planet {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: goldenrod;
+      border: 1px solid silver;
+      font-size: 2.5rem;
+      font-weight: 600;
+      max-width: 50px;
+      max-height: 50px;
+      min-width: 50px;
+      min-height: 50px;
+      padding: 20px;
+      border-radius: 50%;
+      background-color: rgba($color: #ffff, $alpha: 0.1);
+      animation-duration: 10000ms;
+      animation-iteration-count: infinite;
+      animation-fill-mode: forwards;
+      animation-timing-function: linear;
+      transform: translate(-50%, -50%) rotate(0deg);
+      animation-name: planetSpin;
+      z-index: 1;
+
+      &:nth-child(1) {
+        top: 50%;
+        left: 0%;
+      }
+
+      &:nth-child(2) {
+        top: 15%;
+        left: 15%;
+      }
+
+      &:nth-child(3) {
+        top: 85%;
+        left: 15%;
+      }
+
+      &:nth-child(4) {
+        top: 0%;
+        left: 50%;
+      }
+
+      &:nth-child(5) {
+        top: 100%;
+        left: 50%;
+      }
+
+      &:nth-child(6) {
+        top: 15%;
+        left: 85%;
+      }
+
+      &:nth-child(7) {
+        top: 50%;
+        left: 100%;
+      }
+
+      &:nth-child(8) {
+        top: 85%;
+        left: 85%;
+      }
+    }
+
+    .sun {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform: translate(-50%, -50%);
+      top: 50%;
+      left: 50%;
+      font-size: 5rem;
+      color: goldenrod;
+
+      animation-duration: 10000ms;
+      animation-iteration-count: infinite;
+      animation-fill-mode: forwards;
+      animation-timing-function: linear;
+      transform: translate(-50%, -50%) rotate(0deg);
+      animation-name: planetSpin;
+    }
+
+    @keyframes planetSpin {
+      0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+      }
+      100% {
+        transform: translate(-50%, -50%) rotate(-359.9deg);
+      }
+    }
+  }
+
+  @keyframes planetsRotation {
+    0% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(359.9deg);
+    }
+  }
+}

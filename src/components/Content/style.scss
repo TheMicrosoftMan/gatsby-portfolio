@@ -1,0 +1,21 @@
+.content {
+  color: #d4d4d4;
+  display: flex;
+  height: $content-height;
+
+  &-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+
+    &-row {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+
+      .gb-image {
+        width: 100%;
+      }
+    }
+  }
+}

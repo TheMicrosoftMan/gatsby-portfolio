@@ -1,0 +1,33 @@
+.post {
+  display: flex;
+
+  &-page {
+    $margin-top-bottom: 10px;
+
+    margin: $margin-top-bottom 13px;
+    font-weight: 400;
+    overflow-y: auto;
+    height: calc(#{$content-height} - #{$margin-top-bottom} * 2);
+
+    &__title {
+      color: #dcdcaa;
+      font-size: 1.75rem;
+    }
+
+    &__content {
+      color: $text-color;
+      font-size: 1rem;
+      margin: 15px 15px 15px 0;
+
+      p {
+        margin: 20px 0;
+        text-align: justify;
+      }
+    }
+
+    &__date {
+      color: #c586c0;
+      margin-top: 20px;
+    }
+  }
+}

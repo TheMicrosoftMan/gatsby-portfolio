@@ -1,0 +1,43 @@
+.repos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  height: max-content;
+
+  &__repo {
+    display: flex;
+    padding: 10px;
+    margin: 3px;
+    border: 2px solid gray;
+    color: #ccc;
+    text-decoration: none;
+    transition-duration: 0.3s;
+    position: relative;
+
+    &_name {
+      transition-duration: 0.3s;
+    }
+  }
+
+  &:hover {
+    .repos__repo {
+      border: 2px solid rgb(66, 66, 66);
+      transition-duration: 0.2s;
+
+      &_name,
+      &_number {
+        transition-duration: 0.1s;
+        color: rgb(131, 131, 131);
+      }
+    }
+
+    .hovered {
+      border: 2px solid gray;
+
+      .repos__repo_number,
+      .repos__repo_name {
+        color: #ccc;
+      }
+    }
+  }
+}
