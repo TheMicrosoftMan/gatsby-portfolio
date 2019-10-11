@@ -10,7 +10,13 @@ const BlogPage = ({ data }) => (
   <Layout>
     <SEO title="Posts" />
     <div className="page blog">
-      <PostsList posts={data.allMarkdownRemark.edges} />
+      <PostsList
+        posts={data.allMarkdownRemark.edges}
+        page={{
+          icon: <i class="mi mi-Dictionary" />,
+          title: "Blog"
+        }}
+      />
       {data && (
         <div className="blog__list">
           {data.allMarkdownRemark.edges.map(data => {

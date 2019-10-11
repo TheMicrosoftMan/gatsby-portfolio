@@ -1,17 +1,23 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React from "react";
+import { graphql } from "gatsby";
 
-import SEO from "../../components/SEO/seo"
-import Layout from "../../components/Layout/layout"
-import PostsList from "../../components/PostsList"
+import SEO from "../../components/SEO/seo";
+import Layout from "../../components/Layout/layout";
+import PostsList from "../../components/PostsList";
 
 const PostContent = ({ data }) => {
-  const post = data.markdownRemark
+  const post = data.markdownRemark;
   return (
     <Layout>
       <SEO title={post.frontmatter.title} />
       <div className="post">
-        <PostsList posts={data.allMarkdownRemark.edges} />
+        <PostsList
+          posts={data.allMarkdownRemark.edges}
+          page={{
+            icon: <i class="mi mi-Dictionary" />,
+            title: "Blog"
+          }}
+        />
         <div className="post-page">
           <h2 className="post-page__title">{post.frontmatter.title}</h2>
           <div
@@ -24,8 +30,8 @@ const PostContent = ({ data }) => {
         </div>
       </div>
     </Layout>
-  )
-}
+  );
+};
 
 export const postQuery = graphql`
   query BlogPostByPath($path: String!) {
@@ -36,6 +42,7 @@ export const postQuery = graphql`
         title
         author
         date
+        short
       }
     }
     allMarkdownRemark {
@@ -46,11 +53,12 @@ export const postQuery = graphql`
             title
             date
             author
+            short
           }
         }
       }
     }
   }
-`
+`;
 
-export default PostContent
+export default PostContent;
