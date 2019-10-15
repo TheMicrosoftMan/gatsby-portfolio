@@ -53,7 +53,8 @@
     display: flex;
 
     &__list {
-      margin: 10px;
+      margin: 7px 0 7px 7px;
+      padding: 10px;
       display: flex;
       flex-wrap: wrap;
       width: 100%;
@@ -111,12 +112,24 @@
 
   .github {
     position: relative;
+    // background-color: #262626;
+
+    .PostsList .post-link {
+      font-family: "Selawik Semibold";
+      font-size: rem(14px);
+      line-height: rem(20px);
+    }
 
     .user_info {
+      $padding: 10px;
+      $margin: 7px;
+
+      @include acrylic-background-black;
+      padding: $padding;
       display: flex;
       flex-direction: column;
-      margin: 7px 0 7px 7px;
-      height: calc(#{$content-height} - 14px);
+      margin: $margin 0 $margin $margin;
+      height: calc(#{$content-height} - #{$margin} * 2 - #{$padding} * 2);
       overflow-y: auto;
 
       .info {
@@ -142,37 +155,44 @@
           margin-left: 20px;
 
           &_login {
-            font-size: 1.9rem;
-            line-height: 1.9rem;
+            font-family: "Selawik Semilight";
+            font-size: rem(24px);
+            line-height: rem(28px);
+            font-weight: normal;
             margin-bottom: 5px;
             text-decoration: none;
-            font-weight: bold;
           }
 
           &_name {
-            font-size: 1.6rem;
-            margin-bottom: 17px;
+            font-family: "Selawik Regular";
+            font-size: rem(20px);
+            line-height: rem(24px);
+            margin-bottom: 10px;
             color: #ccc;
             opacity: 0.7;
           }
 
-          &_location {
-            align-items: center;
-            margin-bottom: 20px;
-          }
-
           &_at {
+            display: flex;
             line-height: 1rem;
             margin: 3px 0;
             color: #ccc;
 
+            i {
+              line-height: rem(20px);
+            }
+
             &_date {
-              color: #569cd6;
+              font-family: "Selawik Semibold";
+              font-size: rem(14px);
+              line-height: rem(20px);
             }
 
             &_text {
+              font-family: "Selawik Regular";
+              font-size: rem(14px);
+              line-height: rem(20px);
               margin-left: 5px;
-              color: #ce9178;
             }
           }
         }
@@ -188,7 +208,9 @@
           align-items: center;
           font-weight: normal;
           margin-bottom: 5px;
-          font-size: 1.5rem;
+          font-family: "Selawik Semilight";
+          font-size: rem(24px);
+          line-height: rem(28px);
 
           &_repo-count {
             font-size: 0.7rem;
@@ -203,10 +225,15 @@
     }
 
     .repo_info {
+      $padding: 10px;
+      $margin: 7px;
+
+      @include acrylic-background-black;
       display: flex;
       flex-direction: column;
-      margin: 7px 0 7px 7px;
-      height: calc(#{$content-height} - 14px);
+      padding: $padding;
+      margin: $margin 0 $margin $margin;
+      height: calc(#{$content-height} - #{$margin} * 2 - #{$padding} * 2);
       overflow-y: auto;
       position: relative;
 
@@ -243,7 +270,11 @@
 
       details {
         margin: 5px 0;
+
         summary {
+          font-family: "Selawik Regular";
+          font-size: rem(20px);
+          line-height: rem(24px);
           margin: 5px 0;
           cursor: pointer;
 
@@ -268,8 +299,9 @@
       }
 
       &_name {
-        font-size: 1.6rem;
-        line-height: 1.6rem;
+        font-family: "Selawik Semilight";
+        font-size: rem(24px);
+        line-height: rem(28px);
         color: $text-color;
         text-decoration: none;
 
@@ -280,6 +312,9 @@
 
       &_text {
         display: flex;
+        font-family: "Selawik Regular";
+        font-size: rem(14px);
+        line-height: rem(20px);
 
         &_label {
           color: #9cdcfe;
@@ -319,6 +354,10 @@
           border-left: 3px solid #587c0c;
 
           &_item {
+            font-family: "Selawik Regular";
+            font-size: rem(14px);
+            line-height: rem(20px);
+
             &_name {
               color: #9cdcfe;
             }
@@ -346,7 +385,6 @@
 
         &-list {
           list-style: none;
-          max-height: 200px;
           overflow-y: auto;
           padding-left: 15px;
           margin-left: 2px;
@@ -355,10 +393,16 @@
 
           &_item {
             &_date {
+              font-family: "Selawik Regular";
+              font-size: rem(14px);
+              line-height: rem(20px);
               color: #9cdcfe;
             }
 
             &_msg {
+              font-family: "Selawik Regular";
+              font-size: rem(14px);
+              line-height: rem(20px);
               color: #ce9178;
               margin-left: 5px;
             }

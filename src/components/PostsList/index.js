@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 import moment from "moment";
+import { CSSTransition } from "react-transition-group";
 
 const PostsList = ({ page, posts, activePostURL }) => {
   return (
@@ -16,10 +17,16 @@ const PostsList = ({ page, posts, activePostURL }) => {
           <Link
             key={index}
             to={post.node.frontmatter.path}
-            className={`post-link${
-              activePostURL === post.node.frontmatter.path ? " active" : ""
-            }`}
+            className="post-link"
           >
+            <CSSTransition
+              in={activePostURL === post.node.frontmatter.path}
+              timeout={1000}
+              classNames="opacity-animation"
+              unmountOnExit
+            >
+              <div className="active" />
+            </CSSTransition>
             <span className="post-link-icon">
               <i className="mi mi-Page" />
             </span>

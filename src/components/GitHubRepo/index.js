@@ -1,20 +1,19 @@
-import React, { useState } from "react"
+import React from "react";
 
 const GitHubRepo = ({ repo, id }) => {
-  const [isHover, setHover] = useState(false)
   return (
     <a
-      className={`repos__repo${isHover ? " hovered" : ""}`}
+      className={`repos__repo`}
       href={repo.html_url}
       target="_blank"
       rel="noopener noreferrer"
-      onMouseOver={() => setHover(true)}
-      onMouseOut={() => setHover(false)}
     >
-      <span className="repos__repo_number">{id}.</span>
       <span className="repos__repo_name">{repo.name}</span>
+      <p className="repos__repo_description">
+        {repo.description ? repo.description : <i>No description</i>}
+      </p>
     </a>
-  )
-}
+  );
+};
 
-export default GitHubRepo
+export default GitHubRepo;

@@ -21,6 +21,8 @@
     line-height: 1.4rem;
     display: flex;
     align-items: center;
+    position: relative;
+    transition-duration: 0.2s;
 
     &:last-child {
       border-bottom: 1px solid #000;
@@ -73,7 +75,8 @@
   .page {
     padding: 0 8px;
     color: $text-color;
-    height: 60px;
+    max-height: 60px;
+    min-height: 60px;
     border: 1px solid #000;
     border-bottom: none;
     display: flex;
@@ -100,6 +103,12 @@
   }
 
   .active {
-    border-left: 2px solid rgb(21, 89, 135);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 2px;
+    height: 80%;
+    background-color: rgb(21, 89, 135);
   }
 }

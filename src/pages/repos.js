@@ -130,6 +130,7 @@ const ReposPage = () => {
         });
 
         setActiveRepo({
+          id: data.data.id,
           full_name: data.data.full_name,
           description: data.data.description,
           html_url: data.data.html_url,
@@ -178,9 +179,17 @@ const ReposPage = () => {
 
   return (
     <Layout>
-      <SEO title="Repos" />
+      <SEO title="Repositories" />
       <div className="page github">
         <div className="PostsList">
+          <div className="page">
+            <div className="page-text">
+              <span className="page-icon">
+                <i className="mi mi-github" />
+              </span>
+              <span className="page-title">Repositories</span>
+            </div>
+          </div>
           <CSSTransition
             in={!loadingState.loadingRepos}
             timeout={1000}
@@ -193,14 +202,26 @@ const ReposPage = () => {
               ) : (
                 githubRepos.map((repo, index) => {
                   return (
-                    <span
+                    <div
                       key={repo.id}
                       to={repo.html_url}
                       className="post-link"
                       onClick={() => getRepoInfo(repo.name)}
                     >
+                      <CSSTransition
+                        in={
+                          activeRepo.id === repo.id &&
+                          !loadingState.loadingRepoInfo &&
+                          activeScreen === screens.REPO
+                        }
+                        timeout={1000}
+                        classNames="opacity-animation"
+                        unmountOnExit
+                      >
+                        <div className="active" />
+                      </CSSTransition>
                       {index + 1}. {repo.name}
-                    </span>
+                    </div>
                   );
                 })
               )}
@@ -362,7 +383,16 @@ const ReposPage = () => {
                                     }
                                   ]
                                 }}
-                                options={{ legend: { position: "bottom" } }}
+                                options={{
+                                  legend: {
+                                    position: "chartArea",
+                                    labels: {
+                                      fontFamily: "Selawik Regular",
+                                      fontColor: "#fff",
+                                      fontSize: 14
+                                    }
+                                  }
+                                }}
                               />
                             </div>
                           </div>
@@ -401,9 +431,11 @@ const ReposPage = () => {
                               <span className="info_user_name">
                                 {gitHubUserInfo.name}
                               </span>
-                              <span className="info_user_location">
+                              <span className="info_user_at">
                                 <i className="mi mi-Location"></i>
-                                {gitHubUserInfo.location}
+                                <span className="info_user_at_date">
+                                  {gitHubUserInfo.location}
+                                </span>
                               </span>
                               <span className="info_user_at">
                                 <i className="mi mi-EmojiTabCelebrationObjects"></i>

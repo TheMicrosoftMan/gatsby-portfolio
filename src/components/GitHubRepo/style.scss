@@ -5,39 +5,36 @@
   height: max-content;
 
   &__repo {
+    @include acrylic-background-black;
     display: flex;
     padding: 10px;
     margin: 3px;
-    border: 2px solid gray;
+    width: 30%;
+    font-family: "Selawik Regular";
+    font-size: rem(20px);
+    line-height: rem(24px);
     color: #ccc;
     text-decoration: none;
     transition-duration: 0.3s;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    height: max-content;
 
     &_name {
       transition-duration: 0.3s;
     }
-  }
 
-  &:hover {
-    .repos__repo {
-      border: 2px solid rgb(66, 66, 66);
-      transition-duration: 0.2s;
-
-      &_name,
-      &_number {
-        transition-duration: 0.1s;
-        color: rgb(131, 131, 131);
-      }
+    &_description {
+      font-family: "Selawik Regular";
+      font-size: rem(14px);
+      line-height: rem(20px);
+      margin-top: 10px;
+      flex-grow: 100;
     }
 
-    .hovered {
-      border: 2px solid gray;
-
-      .repos__repo_number,
-      .repos__repo_name {
-        color: #ccc;
-      }
+    &:hover {
+      border: 1px solid #6e6e6e;
     }
   }
 }
