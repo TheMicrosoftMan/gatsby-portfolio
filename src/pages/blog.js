@@ -13,15 +13,19 @@ const BlogPage = ({ data }) => (
       <PostsList
         posts={data.allMarkdownRemark.edges}
         page={{
-          icon: <i class="mi mi-Dictionary" />,
+          icon: <i className="mi mi-Dictionary" />,
           title: "Blog"
         }}
       />
       {data && (
         <div className="blog__list">
-          {data.allMarkdownRemark.edges.map(data => {
+          {data.allMarkdownRemark.edges.map((data, index) => {
             return (
-              <Link className="blog__list_item" to={data.node.frontmatter.path}>
+              <Link
+                className="blog__list_item"
+                to={data.node.frontmatter.path}
+                key={index}
+              >
                 <span className="blog__list_item_title">
                   {data.node.frontmatter.title}
                 </span>

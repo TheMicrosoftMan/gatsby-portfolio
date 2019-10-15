@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react"
-import axios from "axios"
-import moment from "moment"
-import { Pie } from "react-chartjs-2"
-import GitHubRepo from "../components/GitHubRepo"
-import Preloader from "../components/Preloader"
-import { TransitionGroup, CSSTransition } from "react-transition-group"
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import moment from "moment";
+import { Pie } from "react-chartjs-2";
+import GitHubRepo from "../components/GitHubRepo";
+import Preloader from "../components/Preloader";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
-import Layout from "../components/Layout/layout"
-import SEO from "../components/SEO/seo"
+import Layout from "../components/Layout/layout";
+import SEO from "../components/SEO/seo";
 
 const colorsArr = [
   "#FFB900",
@@ -28,30 +28,30 @@ const colorsArr = [
   "#10893E",
   "#68768A",
   "#567C73",
-  "#847545",
-]
+  "#847545"
+];
 
 const screens = {
   USER: "USER",
-  REPO: "REPO",
-}
+  REPO: "REPO"
+};
 
 const ReposPage = () => {
-  const [gitHubUserInfo, setGitHubUserInfo] = useState({})
-  const [githubRepos, setGithubRepos] = useState([])
-  const [activeRepo, setActiveRepo] = useState({})
+  const [gitHubUserInfo, setGitHubUserInfo] = useState({});
+  const [githubRepos, setGithubRepos] = useState([]);
+  const [activeRepo, setActiveRepo] = useState({});
 
   const [loadingState, setLoadingState] = useState({
     loadingRepos: false,
     loadingRepoInfo: false,
-    loadingInfo: false,
-  })
+    loadingInfo: false
+  });
 
-  const [activeScreen, setActiveScreen] = useState(screens.USER)
+  const [activeScreen, setActiveScreen] = useState(screens.USER);
 
   useEffect(() => {
     async function loadData() {
-      const gitHubUserInfoJSON = await getGitHubUserInfo()
+      const gitHubUserInfoJSON = await getGitHubUserInfo();
       setGitHubUserInfo({
         login: gitHubUserInfoJSON.data.login,
         avatar_url: gitHubUserInfoJSON.data.avatar_url,
@@ -60,70 +60,74 @@ const ReposPage = () => {
         location: gitHubUserInfoJSON.data.location,
         public_repos: gitHubUserInfoJSON.data.public_repos,
         created_at: gitHubUserInfoJSON.data.created_at,
-        updated_at: gitHubUserInfoJSON.data.updated_at,
-      })
-      setLoadingState({
-        ...loadingState,
-        loadingRepos: true,
-        loadingInfo: false,
-      })
+        updated_at: gitHubUserInfoJSON.data.updated_at
+      });
+      setLoadingState(loadingState => {
+        return {
+          ...loadingState,
+          loadingRepos: true,
+          loadingInfo: false
+        };
+      });
 
-      const githubReposJSON = await getGithubRepos()
+      const githubReposJSON = await getGithubRepos();
       setGithubRepos(
         githubReposJSON.data.map(repo => {
           return {
             id: repo.id,
             name: repo.name,
             description: repo.description,
-            html_url: repo.html_url,
-          }
+            html_url: repo.html_url
+          };
         })
-      )
-      setLoadingState({ ...loadingState, loadingRepos: false })
+      );
+      setLoadingState(loadingState => {
+        return { ...loadingState, loadingRepos: false };
+      });
     }
-    setLoadingState({ loadingRepos: true, loadingInfo: true })
-    loadData()
-  }, [])
+    setLoadingState({ loadingRepos: true, loadingInfo: true });
+    loadData();
+  }, []);
 
   const getGitHubUserInfo = () => {
-    return axios.get("https://api.github.com/users/themicrosoftman")
-  }
+    return axios.get("https://api.github.com/users/themicrosoftman");
+  };
 
   const getGithubRepos = () => {
     return axios.get(
       "https://api.github.com/users/themicrosoftman/repos?sort=updated"
-    )
-  }
+    );
+  };
 
   const getRepoInfo = repo_id => {
-    setActiveScreen(screens.REPO)
-    setLoadingState({ ...loadingState, loadingRepoInfo: true })
+    setActiveScreen(screens.REPO);
+    setLoadingState({ ...loadingState, loadingRepoInfo: true });
     axios
       .get(`https://api.github.com/repos/themicrosoftman/${repo_id}`)
       .then(async data => {
-        const reposLanguages = await getReposLanguages(repo_id)
-        const reposCommits = await getReposCommits(repo_id)
+        const reposLanguages = await getReposLanguages(repo_id);
+        const reposCommits = await getReposCommits(repo_id);
 
-        const reposLanguagesArr = []
+        const reposLanguagesArr = [];
         for (let lang in reposLanguages.data) {
           reposLanguagesArr.push({
             name: lang,
-            bytes: reposLanguages.data[lang],
-          })
+            bytes: reposLanguages.data[lang]
+          });
         }
 
-        let bytesSum = 0
+        let bytesSum = 0;
         reposLanguagesArr.forEach(lang => {
-          bytesSum += lang.bytes
-        })
+          bytesSum += lang.bytes;
+        });
 
         const reposLanguagesDetailArr = reposLanguagesArr.map(lang => {
           return {
             name: lang.name,
             bytes: lang.bytes,
-            percent: Math.round((lang.bytes * 100) / bytesSum),
-          }
-        })
+            percent: Math.round((lang.bytes * 100) / bytesSum)
+          };
+        });
 
         setActiveRepo({
           full_name: data.data.full_name,
@@ -136,41 +140,41 @@ const ReposPage = () => {
           reposCommits: reposCommits.data.map(commit => {
             return {
               message: commit.commit.message,
-              date: commit.commit.author.date,
-            }
+              date: commit.commit.author.date
+            };
           }),
-          colors: getRandomColors(reposLanguagesDetailArr.length),
-        })
+          colors: getRandomColors(reposLanguagesDetailArr.length)
+        });
 
-        setLoadingState({ ...loadingState, loadingRepoInfo: false })
+        setLoadingState({ ...loadingState, loadingRepoInfo: false });
       })
-      .catch(err => console.log(err))
-  }
+      .catch(err => console.log(err));
+  };
 
   const getReposLanguages = repo_id => {
     return axios.get(
       `https://api.github.com/repos/themicrosoftman/${repo_id}/languages`
-    )
-  }
+    );
+  };
 
   const getReposCommits = repo_id => {
     return axios.get(
       `https://api.github.com/repos/themicrosoftman/${repo_id}/commits`
-    )
-  }
+    );
+  };
 
   const getRandomColors = count => {
-    let colorsSet = new Set()
+    let colorsSet = new Set();
     while (colorsSet.size < count) {
-      const randomColor = colorsArr[getRandomValue(0, count)]
-      colorsSet.add(randomColor)
+      const randomColor = colorsArr[getRandomValue(0, count)];
+      colorsSet.add(randomColor);
     }
-    return [...colorsSet]
-  }
+    return [...colorsSet];
+  };
 
   const getRandomValue = (min, max) => {
-    return Math.floor(Math.random() * (max - min + 1)) + min
-  }
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
 
   return (
     <Layout>
@@ -197,7 +201,7 @@ const ReposPage = () => {
                     >
                       {index + 1}. {repo.name}
                     </span>
-                  )
+                  );
                 })
               )}
             </div>
@@ -226,7 +230,7 @@ const ReposPage = () => {
                             <div
                               className="repo_info_close"
                               onClick={() => {
-                                setActiveScreen(screens.USER)
+                                setActiveScreen(screens.USER);
                               }}
                             >
                               <i className="mi mi-Back"></i>
@@ -234,6 +238,7 @@ const ReposPage = () => {
                             <img
                               src={gitHubUserInfo.avatar_url}
                               className="repo_info_head_avatar"
+                              alt={gitHubUserInfo.avatar_url}
                             />
                             <a
                               href={activeRepo.html_url}
@@ -299,7 +304,7 @@ const ReposPage = () => {
                                               {lang.percent}%
                                             </span>
                                           </li>
-                                        )
+                                        );
                                       }
                                     )}
                                   </ul>
@@ -330,7 +335,7 @@ const ReposPage = () => {
                                               {commit.message}
                                             </span>
                                           </li>
-                                        )
+                                        );
                                       }
                                     )}
                                   </ul>
@@ -342,20 +347,20 @@ const ReposPage = () => {
                                 data={{
                                   labels: activeRepo.reposLanguages.map(
                                     lang => {
-                                      return lang.name
+                                      return lang.name;
                                     }
                                   ),
                                   datasets: [
                                     {
                                       data: activeRepo.reposLanguages.map(
                                         lang => {
-                                          return lang.percent
+                                          return lang.percent;
                                         }
                                       ),
                                       backgroundColor: activeRepo.colors,
-                                      hoverBackgroundColor: activeRepo.colors,
-                                    },
-                                  ],
+                                      hoverBackgroundColor: activeRepo.colors
+                                    }
+                                  ]
                                 }}
                                 options={{ legend: { position: "bottom" } }}
                               />
@@ -382,6 +387,7 @@ const ReposPage = () => {
                             <img
                               src={gitHubUserInfo.avatar_url}
                               className="info_avatar"
+                              alt={gitHubUserInfo.avatar_url}
                             />
                             <div className="info_user">
                               <a
@@ -442,7 +448,7 @@ const ReposPage = () => {
                                       id={index + 1}
                                       repo={repo}
                                     />
-                                  )
+                                  );
                                 })
                               )}
                             </div>
@@ -468,7 +474,7 @@ const ReposPage = () => {
         </CSSTransition>
       </div>
     </Layout>
-  )
-}
+  );
+};
 
-export default ReposPage
+export default ReposPage;

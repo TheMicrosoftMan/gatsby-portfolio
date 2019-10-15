@@ -4,6 +4,7 @@
   background-color: #1f1f1f;
   width: 100%;
   max-width: 250px;
+  min-width: 200px;
   height: $content-height;
   overflow: auto;
 
@@ -99,7 +100,6 @@
   }
 
   .active {
-    background-color: red;
-    color: #fff;
+    border-left: 2px solid rgb(21, 89, 135);
   }
 }

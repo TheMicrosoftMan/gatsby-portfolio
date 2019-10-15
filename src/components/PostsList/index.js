@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 import moment from "moment";
 
-const PostsList = ({ page, posts }) => {
+const PostsList = ({ page, posts, activePostURL }) => {
   return (
     <div className="PostsList">
       <div className="page">
@@ -11,15 +11,17 @@ const PostsList = ({ page, posts }) => {
           <span className="page-title">{page.title}</span>
         </div>
       </div>
-      {posts.map(post => {
+      {posts.map((post, index) => {
         return (
           <Link
-            key={post.node.id}
+            key={index}
             to={post.node.frontmatter.path}
-            className="post-link"
+            className={`post-link${
+              activePostURL === post.node.frontmatter.path ? " active" : ""
+            }`}
           >
             <span className="post-link-icon">
-              <i class="mi mi-Page" />
+              <i className="mi mi-Page" />
             </span>
             <div className="post-link-text">
               <span className="post-link-title">

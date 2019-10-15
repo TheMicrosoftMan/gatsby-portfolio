@@ -7,27 +7,57 @@
     margin: $margin-top-bottom 13px;
     font-weight: 400;
     overflow-y: auto;
+    width: 100%;
     height: calc(#{$content-height} - #{$margin-top-bottom} * 2);
 
     &__title {
-      color: #dcdcaa;
-      font-size: 1.75rem;
+      font-family: "Selawik Semilight";
+      font-size: rem(24px);
+      line-height: rem(28px);
+      font-weight: normal;
+      color: #fff;
     }
 
     &__content {
       color: $text-color;
-      font-size: 1rem;
-      margin: 15px 15px 15px 0;
+      margin: 20px 15px 15px 0;
 
       p {
-        margin: 20px 0;
-        text-align: justify;
+        font-family: "Selawik Regular";
+        font-size: rem(16px);
+        line-height: rem(20px);
+        font-weight: normal;
+        overflow-wrap: break-word;
+        margin: 9px 0;
       }
     }
 
-    &__date {
-      color: #c586c0;
-      margin-top: 20px;
+    &__details {
+      display: flex;
+      font-family: "Selawik Regular";
+      font-size: rem(12px);
+      line-height: rem(14px);
+      font-weight: normal;
+      margin-top: 9px;
+      color: #fff;
+      opacity: 0.6;
+
+      &_item {
+        display: flex;
+        align-items: center;
+
+        .mi {
+          margin-bottom: 2px;
+          font-size: rem(12px);
+          line-height: rem(12px);
+          margin: 0 9px;
+        }
+
+        .mi-CircleRingBadge12 {
+          font-size: 0.4rem;
+          margin-top: 3px;
+        }
+      }
     }
   }
 }
