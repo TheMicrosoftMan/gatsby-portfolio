@@ -16,9 +16,9 @@
 @import "../components/Hello/style";
 @import "../components/Preloader/style";
 @import "../components/ShareBlock/style";
+@import "../components/Skill/style";
 
 @import "./posts";
-@import "./contact";
 @import "./skills";
 
 .app {
@@ -438,6 +438,105 @@
     .opacity-animation-exit-active {
       opacity: 0;
       transition: opacity 1000ms;
+    }
+  }
+
+  .about {
+    position: relative;
+
+    &_info {
+      $padding: 10px;
+      $margin: 7px;
+
+      @include acrylic-background-black;
+      padding: $padding;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin: $margin;
+      height: calc(#{$content-height} - #{$margin} * 2 - #{$padding} * 2);
+      overflow-y: auto;
+
+      &__container {
+        display: flex;
+        flex-direction: column;
+        margin: 15px 0;
+
+        &:first-child {
+          margin-top: 0;
+        }
+
+        &_title {
+          flex: 1 1 10%;
+        }
+
+        &_description {
+          flex: 1 1 90%;
+          display: flex;
+          flex-wrap: wrap;
+
+          &_job {
+            width: 50%;
+            margin-bottom: 20px;
+          }
+
+          &_skill {
+            width: 25%;
+            margin-bottom: 20px;
+            margin-right: 60px;
+
+            .skills_lists {
+              display: flex;
+              width: 100%;
+
+              ol {
+                width: 100%;
+                margin-top: 3px;
+                list-style: none;
+
+                li {
+                  margin-bottom: 5px;
+                }
+              }
+            }
+          }
+        }
+
+        .jobs {
+          display: flex;
+          flex-wrap: wrap;
+        }
+
+        h2 {
+          font-family: "Selawik Semilight";
+          font-size: rem(24px);
+          line-height: rem(28px);
+          font-weight: normal;
+        }
+
+        h3 {
+          margin: 3px 0;
+          font-family: "Selawik Regular";
+          font-size: rem(20px);
+          line-height: rem(24px);
+          font-weight: normal;
+        }
+
+        h4 {
+          margin: 3px 0;
+          font-family: "Selawik Semibold";
+          font-size: rem(14px);
+          line-height: rem(20px);
+          font-weight: normal;
+        }
+
+        p {
+          font-family: "Selawik Regular";
+          font-size: rem(14px);
+          line-height: rem(20px);
+          font-weight: normal;
+        }
+      }
     }
   }
 

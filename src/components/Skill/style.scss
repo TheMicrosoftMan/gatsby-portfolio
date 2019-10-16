@@ -1,0 +1,75 @@
+.skill-item {
+  $progress-height: 12px;
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-family: "Selawik Regular";
+  font-size: rem(14px);
+  line-height: rem(20px);
+  font-weight: normal;
+
+  &__head {
+    position: relative;
+
+    &_bar {
+      position: absolute;
+      top: 0;
+
+      &_percent {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        &-appear {
+          left: 0px;
+          opacity: 0;
+
+          &-active {
+            left: 100%;
+            opacity: 1;
+            transition: all 700ms linear;
+          }
+
+          &-done {
+            left: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  .progress {
+    width: 100%;
+    border: 2px solid #0063b1;
+    height: $progress-height;
+    box-sizing: border-box;
+
+    .bar {
+      height: calc(#{$progress-height} - 2px);
+
+      &__fill {
+        width: 100%;
+        height: 100%;
+        background-color: #0063b1;
+
+        &-appear {
+          width: 0px;
+
+          &-active {
+            width: 100%;
+            transition: width 700ms linear;
+          }
+        }
+      }
+    }
+  }
+}
+
+.skill-anim-appear {
+  opacity: 0;
+}
+.skill-anim-appear-active {
+  opacity: 1;
+  transition: opacity 1000ms;
+}

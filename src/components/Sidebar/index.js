@@ -23,7 +23,7 @@ const Sidebar = ({ siteTitle }) => (
         <i className="mi mi-github" />
       </span>
     </Link>
-    <Link to="/contact">
+    <Link to="/about">
       <span className="sidebar__icon">
         <i className="mi mi-ContactInfo" />
       </span>
