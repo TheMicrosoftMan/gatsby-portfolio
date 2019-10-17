@@ -2,6 +2,7 @@ import React from "react";
 
 import Layout from "../components/Layout/layout";
 import Skill from "../components/Skill";
+import Job from "../components/Job";
 import SEO from "../components/SEO/seo";
 
 const ContactPage = () => (
@@ -97,11 +98,15 @@ const ContactPage = () => (
           <div className="about_info__container_title">
             <h2>Experience</h2>
           </div>
-          <div className="about_info__container_description jobs">
-            <div className="about_info__container_description_job">
-              <h3>Title</h3>
-              <h4>Company</h4>
-              <p>Description</p>
+          <div className="about_info__container_description_jobs">
+            <div className="about_info__container_description_jobs_job">
+              <Job
+                title={"Front end Developer"}
+                company={"CompanyName"}
+                period={{
+                  from: "05.05.2019"
+                }}
+              />
             </div>
           </div>
         </div>

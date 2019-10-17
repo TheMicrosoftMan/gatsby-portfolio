@@ -17,6 +17,7 @@
 @import "../components/Preloader/style";
 @import "../components/ShareBlock/style";
 @import "../components/Skill/style";
+@import "../components/Job/style";
 
 @import "./posts";
 @import "./skills";
@@ -446,7 +447,7 @@
 
     &_info {
       $padding: 10px;
-      
+
       background-color: #262626;
       padding: $padding;
       display: flex;
@@ -473,11 +474,6 @@
           display: flex;
           flex-wrap: wrap;
 
-          &_job {
-            width: 50%;
-            margin-bottom: 20px;
-          }
-
           &_skill {
             width: 100%;
             margin-bottom: 20px;
@@ -502,11 +498,19 @@
               }
             }
           }
-        }
 
-        .jobs {
-          display: flex;
-          flex-wrap: wrap;
+          &_jobs {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 12px;
+
+            &_job {
+              max-width: 40%;
+              min-width: 600px;
+              width: 100%;
+              margin-bottom: 20px;
+            }
+          }
         }
 
         h2 {

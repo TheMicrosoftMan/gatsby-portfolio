@@ -1,0 +1,73 @@
+.Job {
+  display: flex;
+  width: 100%;
+  height: 100%;
+
+  &__duration {
+    border: 1px solid #0063b1;
+    max-width: 140px;
+    width: 100%;
+    min-height: 140px;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition-duration: 0.3s;
+    box-shadow: 0 6.4px 14.4px 0 rgba(0, 99, 177, 0.132),
+      0 1.2px 3.6px 0 rgba(0, 99, 177, 0.108);
+    font-family: "Selawik Regular";
+    font-size: rem(20px);
+    line-height: rem(24px);
+    font-weight: normal;
+
+    &:hover {
+      background-color: #0063b1;
+      box-shadow: 0 25.6px 57.6px 0 rgba(0, 99, 177, 0.22),
+        0 4.8px 14.4px 0 rgba(0, 99, 177, 0.18);
+    }
+
+    &-appear {
+      opacity: 0;
+
+      &-active {
+        opacity: 1;
+        transition: all 700ms linear;
+      }
+    }
+  }
+
+  &__info {
+    margin: 0 10px 10px;
+    margin-left: 30px;
+    width: 100%;
+
+    &_title {
+      font-family: "Selawik Regular";
+      font-size: rem(20px);
+      line-height: rem(24px);
+      font-weight: normal;
+    }
+
+    &_company-period {
+      display: flex;
+      align-items: center;
+      margin: 3px 0;
+
+      font-family: "Selawik Semibold";
+      font-size: rem(14px);
+      line-height: rem(20px);
+      font-weight: normal;
+      width: 100%;
+
+      i {
+        font-size: 0.4rem;
+        margin: 0 9px;
+        margin-top: 3px;
+        margin-bottom: 2px;
+        line-height: 0.75rem;
+      }
+    }
+  }
+}
