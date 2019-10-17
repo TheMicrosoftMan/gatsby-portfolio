@@ -12,6 +12,30 @@
   &__head {
     position: relative;
 
+    &_title-name {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &_title {
+      font-family: "Selawik Regular";
+      font-size: rem(20px);
+      line-height: rem(24px);
+      font-weight: normal;
+    }
+
+    &_names {
+      font-family: "Selawik Regular";
+      font-size: rem(14px);
+      line-height: rem(20px);
+      font-weight: normal;
+      
+
+      span {
+        margin-right: 5px;
+      }
+    }
+
     &_bar {
       position: absolute;
       top: 0;

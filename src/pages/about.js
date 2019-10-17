@@ -4,87 +4,6 @@ import Layout from "../components/Layout/layout";
 import Skill from "../components/Skill";
 import SEO from "../components/SEO/seo";
 
-const skills = {
-  technologies: [
-    {
-      name: "HTML",
-      percent: 100
-    },
-    {
-      name: "CSS",
-      percent: 100
-    },
-    {
-      name: "JavaScript",
-      percent: 100
-    },
-    {
-      name: "SASS/SCSS",
-      percent: 100
-    },
-    {
-      name: "Bootstrap",
-      percent: 100
-    },
-    {
-      name: "MaterializeCSS",
-      percent: 100
-    },
-    {
-      name: "NodeJS",
-      percent: 100
-    },
-    {
-      name: "ReactJS",
-      percent: 100
-    },
-    {
-      name: "AJAX",
-      percent: 100
-    },
-    {
-      name: "MySQL",
-      percent: 100
-    },
-    {
-      name: "MongoDB",
-      percent: 100
-    },
-    {
-      name: "Git",
-      percent: 100
-    },
-    {
-      name: "Photoshop",
-      percent: 100
-    },
-    {
-      name: "Illustrator",
-      percent: 100
-    },
-    {
-      name: "C#",
-      percent: 100
-    },
-    {
-      name: "WPF",
-      percent: 100
-    },
-    {
-      name: "WinForms",
-      percent: 100
-    },
-    {
-      name: "Gulp",
-      percent: 100
-    },
-    {
-      name: "Webpack",
-      percent: 100
-    }
-  ]
-};
-
 const ContactPage = () => (
   <Layout>
     <SEO title="About" />
@@ -118,24 +37,57 @@ const ContactPage = () => (
           </div>
           <div className="about_info__container_description">
             <div className="about_info__container_description_skill">
-              <h3>Technologies</h3>
               <div className="skills_lists">
                 <ol>
-                  {skills.technologies.map((skill, index) => {
-                    return (
-                      <li key={index}>
-                        <Skill name={skill.name} percent={skill.percent} />
-                      </li>
-                    );
-                  })}
-                </ol>
-              </div>
-            </div>
-            <div className="about_info__container_description_skill">
-              <h3>Technologies</h3>
-              <div className="skills_lists">
-                <ol>
-                  <li></li>
+                  <li>
+                    <Skill
+                      title="Front end"
+                      skills={[
+                        "HTML",
+                        "CSS",
+                        "SASS/SCSS",
+                        "JavaScript",
+                        "ES6",
+                        "React.js",
+                        "Redux",
+                        "Gatsby.js",
+                        "Bootstrap",
+                        "MaterializeCSS",
+                        "REST API",
+                        "Photoshop",
+                        "Illustrator"
+                      ]}
+                      percent={90}
+                    />
+                  </li>
+                  <li>
+                    <Skill
+                      title="Back end"
+                      skills={["Node.js", "Express", "socket.io"]}
+                      percent={60}
+                    />
+                  </li>
+                  <li>
+                    <Skill
+                      title="Module Bundlers"
+                      skills={["Gulp", "Webpack"]}
+                      percent={80}
+                    />
+                  </li>
+                  <li>
+                    <Skill
+                      title="Databases"
+                      skills={["MySQL", "MongoDB"]}
+                      percent={40}
+                    />
+                  </li>
+                  <li>
+                    <Skill
+                      title="Other"
+                      skills={["Git", "npm", "yarn"]}
+                      percent={80}
+                    />
+                  </li>
                 </ol>
               </div>
             </div>

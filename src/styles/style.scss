@@ -446,15 +446,13 @@
 
     &_info {
       $padding: 10px;
-      $margin: 7px;
-
-      @include acrylic-background-black;
+      
+      background-color: #262626;
       padding: $padding;
       display: flex;
       flex-direction: column;
       width: 100%;
-      margin: $margin;
-      height: calc(#{$content-height} - #{$margin} * 2 - #{$padding} * 2);
+      height: calc(#{$content-height} - #{$padding} * 2);
       overflow-y: auto;
 
       &__container {
@@ -481,7 +479,7 @@
           }
 
           &_skill {
-            width: 25%;
+            width: 100%;
             margin-bottom: 20px;
             margin-right: 60px;
 
@@ -493,9 +491,13 @@
                 width: 100%;
                 margin-top: 3px;
                 list-style: none;
+                display: flex;
+                flex-wrap: wrap;
 
                 li {
-                  margin-bottom: 5px;
+                  margin-bottom: 10px;
+                  margin-right: 25px;
+                  width: 30%;
                 }
               }
             }
