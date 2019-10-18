@@ -6,7 +6,7 @@ const Skill = ({ title, skills, percent, showPercent }) => {
     <div className="skill-item">
       <div className="skill-item__head">
         <div className="skill-item__head_title-name">
-          {title && <span className="skill-item__head_title">{title}: </span>}
+          {title && <span className="skill-item__head_title">{title}</span>}
           {skills && (
             <div className="skill-item__head_names">
               {skills.map((skill, index) => {

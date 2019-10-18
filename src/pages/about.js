@@ -22,9 +22,47 @@ const ContactPage = ({ data }) => {
               <span className="page-title">About</span>
             </div>
           </div>
-          <div className="post-link">Introduction</div>
-          <div className="post-link">Skills</div>
-          <div className="post-link">Experience</div>
+          <div className="about__aside">
+            <div className="about__aside_head">
+              <div className="about__aside_head_img">
+                <i class="mi mi-Contact"></i>
+              </div>
+              <div className="about__aside_head_name-work">
+                <span className="about__aside_head_name-work_name">
+                  TheMicrosoftMan
+                </span>
+                <span className="about__aside_head_name-work_work">
+                  Front end Developer
+                </span>
+              </div>
+            </div>
+            <div className="about__aside_social">
+              <a
+                className="about__aside_social_link"
+                href="https://www.linkedin.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="mi mi-linkedin"></i>
+              </a>
+              <a
+                className="about__aside_social_link"
+                href="https://www.github.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="mi mi-github"></i>
+              </a>
+              <a
+                className="about__aside_social_link"
+                href="mailto:themicrosoftman@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="mi mi-Mail"></i>
+              </a>
+            </div>
+          </div>
         </div>
         <div className="about_info">
           <div className="about_info__container">

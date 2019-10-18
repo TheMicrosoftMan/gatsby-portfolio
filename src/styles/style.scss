@@ -545,6 +545,72 @@
         }
       }
     }
+
+    &__aside {
+      border: 1px solid #000;
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      box-sizing: border-box;
+
+      &_head {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &_img {
+          $size: 80px;
+
+          max-width: $size;
+          width: 100%;
+          height: $size;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          font-size: 2.5rem;
+
+          background-color: #5d5a58;
+          border-radius: 50%;
+        }
+
+        &_name-work {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-left: 10px;
+
+          &_name {
+            font-family: "Selawik Semilight";
+            font-size: rem(24px);
+            line-height: 28px;
+          }
+
+          &_work {
+            font-family: "Selawik Semibold";
+            font-size: rem(14px);
+            line-height: 20px;
+          }
+        }
+      }
+
+      &_social {
+        display: flex;
+        justify-content: center;
+
+        &_link {
+          font-size: 1.4rem;
+          margin: 0 7px;
+          color: inherit;
+          transition-duration: 0.3s;
+
+          &:hover {
+            color: rgb(177, 177, 177);
+          }
+        }
+      }
+    }
   }
 
   .posts-list {
