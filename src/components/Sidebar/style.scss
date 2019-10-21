@@ -6,66 +6,105 @@
   border-radius: 0;
   color: $text-color;
   max-width: $sidebar-width;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  // animation: startAnimationsidebar 0.1s linear;
+  transition: max-width 0.15s linear;
   margin-left: 0;
   opacity: 1;
 
-  @keyframes startAnimationsidebar {
+  a {
+    text-decoration: none;
+  }
+
+  .sidebar__item {
+    height: $sidebar-width;
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    &:visited {
+      color: $text-color;
+    }
+
+    &_name,
+    &_title {
+      margin-left: 14px;
+    }
+
+    &_title {
+      font-family: "Selawik Semilight";
+      font-size: rem(24px);
+      line-height: rem(28px);
+    }
+
+    &_name {
+      font-family: "Selawik Regular";
+      font-size: rem(20px);
+      line-height: rem(24px);
+    }
+
+    &_name,
+    i {
+      font-size: rem(20px);
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    &:hover {
+      background-color: rgba($color: #fff, $alpha: 0.1);
+
+      .sidebar__item_name,
+      i {
+        color: #fff;
+      }
+    }
+  }
+
+  .opacity-animation-enter {
+    opacity: 0;
+  }
+  .opacity-animation-enter-active {
+    animation: widthAnimation 0.15s;
+  }
+  .opacity-animation-exit {
+    opacity: 1;
+  }
+  .opacity-animation-exit-active {
+    animation: widthAnimationBack 0.15s;
+  }
+
+  @keyframes widthAnimation {
     0% {
-      margin-left: -$sidebar-width * 1;
       opacity: 0;
     }
 
-    25% {
-      margin-left: -$sidebar-width * 0.7;
-      opacity: 0.25;
-    }
-
     50% {
-      margin-left: -$sidebar-width * 0.5;
       opacity: 0.5;
     }
 
-    75% {
-      margin-left: -$sidebar-width * 0.3;
-      opacity: 0.75;
-    }
-
     100% {
-      margin-left: 0;
       opacity: 1;
     }
   }
 
-  a {
-    text-decoration: none;
+  @keyframes widthAnimationBack {
+    0% {
+      opacity: 1;
+    }
 
-    .sidebar__icon {
-      width: $sidebar-width;
-      height: $sidebar-width;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
+    50% {
+      opacity: 0.5;
+    }
 
-      &:visited {
-        color: $text-color;
-      }
-
-      i {
-        font-size: rem(20px);
-        color: rgba(255, 255, 255, 0.75);
-      }
-
-      &:hover {
-        background-color: rgba($color: #fff, $alpha: 0.1);
-
-        i {
-          color: #fff;
-        }
-      }
+    100% {
+      opacity: 0;
     }
   }
+}
+
+.sidebar-open {
+  width: 100%;
+  max-width: 200px;
 }
