@@ -584,13 +584,32 @@
           &_name {
             font-family: "Selawik Semilight";
             font-size: rem(24px);
-            line-height: 28px;
+            line-height: rem(28px);
           }
 
           &_work {
             font-family: "Selawik Semibold";
             font-size: rem(14px);
-            line-height: 20px;
+            line-height: rem(20px);
+          }
+        }
+      }
+
+      &_details {
+        margin: 10px 0;
+        
+        &_item {
+          &_title {
+            font-family: "Selawik Semibold";
+            font-size: rem(14px);
+            line-height: rem(20px);
+          }
+
+          &_value {
+            font-family: "Selawik Regular";
+            font-size: rem(14px);
+            line-height: rem(20px);
+            margin-left: 5px;
           }
         }
       }

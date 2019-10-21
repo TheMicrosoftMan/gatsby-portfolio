@@ -1,12 +1,17 @@
 import React from "react";
 
 import { graphql } from "gatsby";
+import moment from "moment";
 
 import Layout from "../components/Layout/layout";
 import Skill from "../components/Skill";
 import Job from "../components/Job";
 import Education from "../components/Education";
 import SEO from "../components/SEO/seo";
+
+const aboutMe = {
+  birthday: moment("22.02.1997", "DD.MM.YYYY")
+};
 
 const ContactPage = ({ data }) => {
   return (
@@ -33,6 +38,22 @@ const ContactPage = ({ data }) => {
                 </span>
                 <span className="about__aside_head_name-work_work">
                   Front end Developer
+                </span>
+              </div>
+            </div>
+            <div className="about__aside_details">
+              <div className="about__aside_details_item">
+                <span className="about__aside_details_item_title">
+                  Birthday:
+                </span>
+                <span className="about__aside_details_item_value">
+                  {aboutMe.birthday.format("DD.MM.YYYY")}
+                </span>
+              </div>
+              <div className="about__aside_details_item">
+                <span className="about__aside_details_item_title">Age:</span>
+                <span className="about__aside_details_item_value">
+                  {moment().diff(aboutMe.birthday, "years")}
                 </span>
               </div>
             </div>
