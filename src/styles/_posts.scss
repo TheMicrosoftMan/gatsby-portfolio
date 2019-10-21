@@ -22,13 +22,71 @@
       color: $text-color;
       margin: 20px 15px 15px 0;
 
-      p {
+      p,
+      ol {
         font-family: "Selawik Regular";
         font-size: rem(16px);
         line-height: rem(20px);
         font-weight: normal;
         overflow-wrap: break-word;
         margin: 9px 0;
+      }
+
+      ol,
+      ul {
+        list-style-position: inside;
+      }
+
+      blockquote {
+        border-left: 2px green solid;
+        padding-left: 10px;
+        box-sizing: border-box;
+      }
+
+      .vscode-highlight {
+        margin: 9px 0;
+      }
+
+      h1 {
+        font-family: "Selawik Light";
+        font-size: rem(46px);
+        line-height: rem(56px);
+        font-weight: normal;
+      }
+
+      h2 {
+        font-family: "Selawik Light";
+        font-size: rem(34px);
+        line-height: rem(40px);
+        font-weight: normal;
+      }
+
+      h3 {
+        font-family: "Selawik Semilight";
+        font-size: rem(24px);
+        line-height: rem(28px);
+        font-weight: normal;
+      }
+
+      h4 {
+        font-family: "Selawik Regular";
+        font-size: rem(20px);
+        line-height: rem(24px);
+        font-weight: normal;
+      }
+
+      h5 {
+        font-family: "Selawik Semibold";
+        font-size: rem(14px);
+        line-height: rem(20px);
+        font-weight: normal;
+      }
+
+      h6 {
+        font-family: "Selawik Regular";
+        font-size: rem(14px);
+        line-height: rem(20px);
+        font-weight: normal;
       }
     }
 

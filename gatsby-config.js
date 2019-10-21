@@ -54,6 +54,12 @@ module.exports = {
               maxWidth: 500,
               quality: 99
             }
+          },
+          {
+            resolve: "gatsby-remark-vscode",
+            options: {
+              colorTheme: "Dark+ (default dark)"
+            }
           }
         ]
       }
