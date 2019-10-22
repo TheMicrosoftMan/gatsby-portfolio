@@ -19,7 +19,7 @@ const Sidebar = () => {
     {
       icon: <i className="mi mi-Code" />,
       name: "Projects",
-      link: "/skills"
+      link: "/projects"
     },
     {
       icon: <i className="mi mi-github" />,
